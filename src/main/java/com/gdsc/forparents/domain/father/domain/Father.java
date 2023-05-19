@@ -1,5 +1,6 @@
 package com.gdsc.forparents.domain.father.domain;
 
+import com.gdsc.forparents.domain.father.api.dto.FatherDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,8 +29,11 @@ public class Father {
     }
 
     // dto 정해지면
-    private static Father createFather(){
-
-        return null;
+    private static Father createFather(FatherDto fatherDto){
+        return Father.builder()
+                .qNum(fatherDto.getQNum())
+                .ans(fatherDto.getAns())
+                .flag(fatherDto.isFlag())
+                .build();
     }
 }
