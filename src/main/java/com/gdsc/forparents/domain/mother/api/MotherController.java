@@ -2,7 +2,8 @@ package com.gdsc.forparents.domain.mother.api;
 
 import com.gdsc.forparents.domain.mother.api.dto.request.MotherSaveReqListDto;
 import com.gdsc.forparents.domain.mother.api.dto.request.MotherGetReqDto;
-import com.gdsc.forparents.domain.mother.api.dto.response.MotherGetResListDto;
+import com.gdsc.forparents.domain.mother.api.dto.response.MotherGetListDto;
+import com.gdsc.forparents.domain.mother.api.dto.response.MotherGetResInterface;
 import com.gdsc.forparents.domain.mother.application.MotherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -32,12 +33,11 @@ public class MotherController {
      * 어머니를 눌렀을때 -> 어머니 작성한 테스트 결과 제공
      */
     @GetMapping("/self")
-    public ResponseEntity<Map<String, List<MotherGetResListDto>>> motherSelf(@RequestBody MotherGetReqDto motherGetReqDto) {
+    public ResponseEntity<MotherGetListDto> motherSelf(@RequestBody MotherGetReqDto motherGetReqDto) {
 
-        List<MotherGetResListDto> motherSelf = motherService.getMotherSelf(motherGetReqDto.getUserCode());
-        Map<String, List<MotherGetResListDto>> questions = new HashMap<>();
+        List<MotherGetResInterface> motherSelf = motherService.getMotherSelf(motherGetReqDto.getUserCode());
 
-        return new ResponseEntity<>(questions, HttpStatus.OK);
+        return new ResponseEntity<>(new MotherGetListDto(motherSelf), HttpStatus.OK);
     }
 
     /**
@@ -48,8 +48,7 @@ public class MotherController {
     public ResponseEntity<String> motherSelfResult(@RequestBody MotherSaveReqListDto motherReqListDto) {
 
         motherService.saveMotherSelf(motherReqListDto);
-        return null;
-//        return new ResponseEntity<>();
+        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
 
     /**
@@ -57,7 +56,7 @@ public class MotherController {
      */
     @PostMapping("/other")
     private ResponseEntity<String> motherOtherResult() {
-        return null;
-//        return new ResponseEntity<>();
+
+        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
 }
