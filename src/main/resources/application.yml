@@ -1,11 +1,8 @@
 spring:
-  config:
-    activate:
-      on-profile: real
   datasource:
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
-    username: test
-    password: test
+    url: jdbc:mysql://localhost:3306/hack?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
+    username: hack
+    password: hack
     #    url: jdbc:mysql://34.123.145.68:3306/wero?useSSL=false&allowPublicKeyRetrieval=true&&characterEncoding=UTF-8&serverTimezone=UTC
     #    username: wero
     #    password: wero

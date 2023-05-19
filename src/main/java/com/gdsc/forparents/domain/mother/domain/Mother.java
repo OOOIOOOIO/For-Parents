@@ -1,5 +1,6 @@
 package com.gdsc.forparents.domain.mother.domain;
 
+import com.gdsc.forparents.domain.user.domain.Users;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +19,10 @@ public class Mother {
     private int qNum;
     private String ans;
     private boolean flag;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Users users;
 
     @Builder
     private Mother(int qNum, String ans, boolean flag) {
