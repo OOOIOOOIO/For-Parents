@@ -1,9 +1,9 @@
 package com.gdsc.forparents.domain.father.api;
 
-import com.gdsc.forparents.domain.father.api.dto.FatherReqDto;
-import com.gdsc.forparents.domain.father.api.dto.FatherReqListDto;
+import com.gdsc.forparents.domain.father.api.dto.request.FatherGetReqDto;
+import com.gdsc.forparents.domain.father.api.dto.request.FatherSaveReqDto;
+import com.gdsc.forparents.domain.father.api.dto.request.FatherSaveReqListDto;
 import com.gdsc.forparents.domain.father.application.FatherService;
-import com.gdsc.forparents.domain.father.domain.Father;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/api/father")
 public class FatherController {
 
     private final FatherService fatherService;
@@ -27,34 +27,37 @@ public class FatherController {
         this.fatherService = fatherService;
     }
 
-    // 아버지를 눌렀을때 -> 아버지 작성한 테스트 결과 제공
-    @GetMapping("/father/self")
-    public ResponseEntity<String> fatherSelf() {
+    /**
+     * 아버지를 눌렀을때 -> 아버지 작성한 테스트 결과 제공
+     */
+    @GetMapping("/self")
+    public ResponseEntity<String> fatherSelf(@RequestBody FatherGetReqDto fatherGetReqDto) {
 
-        String userCode = fatherService.fatherTestResult();
 
-        return new ResponseEntity<>(userCode, HttpStatus.OK);
+
+//        return new ResponseEntity<>(userCode, HttpStatus.OK);
+        return null;
     }
 
-    // 아버지 테스트 -> 아버지에 대한 테스트 결과 완료 눌렀을 때
-    @PostMapping("/father/self")
-    public ResponseEntity<String> fatherSelfResult(@RequestBody FatherReqListDto fatherReqListDto) {
+    /**
+     * 아버지 테스트 -> 아버지에 대한 테스트 결과 완료 눌렀을 때
+     */
 
-        List<FatherReqDto> questions = fatherReqListDto.getQuestions();
-        for (FatherReqDto question : questions) {
-            log.info("====="+question.getAns());
-        }
-        String userCode = fatherReqListDto.getUserCode();
-        log.info("====="+userCode);
+    @PostMapping("/self")
+    public ResponseEntity<String> fatherSelfResult(@RequestBody FatherSaveReqListDto fatherReqListDto) {
+
+        fatherService.saveFatherSelf(fatherReqListDto);
         return null;
 //        return new ResponseEntity<>();
     }
 
-    // 아버지 테스트 -> 아버지가 어머니에 대한 테스트 결과 완료 눌렀을 때
+    /**
+     * 아버지 테스트 -> 아버지가 어머니에 대한 테스트 결과 완료 눌렀을 때
+     */
     @PostMapping("/father/other")
     private ResponseEntity<String> fatherOtherResult() {
-
-        return new ResponseEntity<>();
+        return null;
+//        return new ResponseEntity<>();
     }
 
 

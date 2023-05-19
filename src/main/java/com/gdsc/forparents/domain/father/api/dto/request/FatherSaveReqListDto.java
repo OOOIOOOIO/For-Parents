@@ -1,4 +1,4 @@
-package com.gdsc.forparents.domain.father.api.dto;
+package com.gdsc.forparents.domain.father.api.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,8 +8,8 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FatherReqListDto {
+public class FatherSaveReqListDto {
 
-    private List<FatherReqDto> questions;
+    private List<FatherSaveReqDto> questions;
     private String userCode;
 }

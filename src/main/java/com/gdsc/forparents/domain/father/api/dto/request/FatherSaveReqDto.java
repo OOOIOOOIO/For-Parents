@@ -1,4 +1,4 @@
-package com.gdsc.forparents.domain.father.api.dto;
+package com.gdsc.forparents.domain.father.api.dto.request;
 
 
 import lombok.AccessLevel;
@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FatherReqDto {
+public class FatherSaveReqDto {
     private Long fatherId;
     private int qNum;
     private String ans;
     private boolean flag;
 
     @Builder
-    public FatherReqDto(Long fatherId, int qNum, String ans, boolean flag) {
+    public FatherSaveReqDto(Long fatherId, int qNum, String ans, boolean flag) {
         this.fatherId = fatherId;
         this.qNum = qNum;
         this.ans = ans;
