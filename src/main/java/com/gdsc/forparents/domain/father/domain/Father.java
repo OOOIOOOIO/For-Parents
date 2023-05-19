@@ -5,6 +5,6 @@ public class Father {
     private Long father_id;
     private int qNum;
     private String ans;
-    private String flag;
+    private boolean flag;
 
 }
