@@ -1,5 +1,6 @@
 package com.gdsc.forparents.domain.mother.api;
 
+import com.gdsc.forparents.domain.father.api.dto.request.FatherSaveReqListDto;
 import com.gdsc.forparents.domain.father.api.dto.response.FatherGetResListDto;
 import com.gdsc.forparents.domain.mother.api.dto.request.MotherSaveReqListDto;
 import com.gdsc.forparents.domain.mother.api.dto.request.MotherGetReqDto;
@@ -49,16 +50,16 @@ public class MotherController {
     public ResponseEntity<String> motherSelfResult(@RequestBody MotherSaveReqListDto motherReqListDto) {
 
         motherService.saveMotherSelf(motherReqListDto);
-        return null;
-//        return new ResponseEntity<>();
+
+        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
 
     /**
      * 어머니 테스트 -> 어머니가 아버지에 대한 테스트 결과 완료 눌렀을 때
      */
     @PostMapping("/other")
-    private ResponseEntity<String> motherOtherResult() {
-        return null;
-//        return new ResponseEntity<>();
+    private ResponseEntity<String> motherOtherResult(@RequestBody MotherSaveReqListDto motherReqListDto) {
+
+        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
 }
