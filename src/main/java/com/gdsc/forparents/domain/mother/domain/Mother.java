@@ -1,5 +1,6 @@
 package com.gdsc.forparents.domain.mother.domain;
 
+import com.gdsc.forparents.domain.mother.api.dto.MotherDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,7 +28,11 @@ public class Mother {
     }
 
     // dto 정해지면
-    public static Mother createMother(){
-        return null;
+    public static Mother createMother(MotherDto motherDto){
+        return Mother.builder()
+                .qNum(motherDto.getQNum())
+                .ans(motherDto.getAns())
+                .flag(motherDto.isFlag())
+                .build();
     }
 }
