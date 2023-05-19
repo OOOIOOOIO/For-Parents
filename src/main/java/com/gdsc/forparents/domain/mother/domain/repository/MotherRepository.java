@@ -1,7 +1,6 @@
 package com.gdsc.forparents.domain.mother.domain.repository;
 
-import com.gdsc.forparents.domain.father.api.dto.response.FatherGetResListDto;
-import com.gdsc.forparents.domain.mother.api.dto.response.MotherGetResListDto;
+import com.gdsc.forparents.domain.mother.api.dto.response.MotherGetResInterface;
 import com.gdsc.forparents.domain.mother.domain.Mother;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +15,7 @@ public interface MotherRepository extends JpaRepository<Mother, Long> {
             "from Mother m " +
             "where m.user_id = :user_id and flag = :flag " +
             "order by m.q_num", nativeQuery = true)
-    public List<MotherGetResListDto> findByUsersAndFlagOrderByQNum(@Param("user_id") Long user_id, @Param("flag") int flag);
+    public List<MotherGetResInterface> findByUsersAndFlagOrderByQNum(@Param("user_id") Long user_id, @Param("flag") int flag);
 
 
     // other만 가져오기(1), qNum asc

@@ -1,9 +1,8 @@
 package com.gdsc.forparents.domain.mother.application;
 
-import com.gdsc.forparents.domain.father.api.dto.response.FatherGetResListDto;
 import com.gdsc.forparents.domain.mother.api.dto.request.MotherSaveReqDto;
 import com.gdsc.forparents.domain.mother.api.dto.request.MotherSaveReqListDto;
-import com.gdsc.forparents.domain.mother.api.dto.response.MotherGetResListDto;
+import com.gdsc.forparents.domain.mother.api.dto.response.MotherGetResInterface;
 import com.gdsc.forparents.domain.mother.domain.Mother;
 import com.gdsc.forparents.domain.mother.domain.repository.MotherRepository;
 import com.gdsc.forparents.domain.user.domain.Users;
@@ -27,10 +26,10 @@ public class MotherService {
     /**
      * 엄마가 엄마거 조회(self)
      */
-    public List<MotherGetResListDto> getMotherSelf(String userCode){
+    public List<MotherGetResInterface> getMotherSelf(String userCode){
         Users users = userRepository.findByUserCode(userCode);
         int flag = 0;
-        List<MotherGetResListDto> byUsersAndFlagOrderByQNum = motherRepository.findByUsersAndFlagOrderByQNum(users.getUserId(), flag);
+        List<MotherGetResInterface> byUsersAndFlagOrderByQNum = motherRepository.findByUsersAndFlagOrderByQNum(users.getUserId(), flag);
 
 
         return byUsersAndFlagOrderByQNum;

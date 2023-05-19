@@ -2,7 +2,8 @@ package com.gdsc.forparents.domain.father.api;
 
 import com.gdsc.forparents.domain.father.api.dto.request.FatherGetReqDto;
 import com.gdsc.forparents.domain.father.api.dto.request.FatherSaveReqListDto;
-import com.gdsc.forparents.domain.father.api.dto.response.FatherGetResListDto;
+import com.gdsc.forparents.domain.father.api.dto.response.FatherGetListDto;
+import com.gdsc.forparents.domain.father.api.dto.response.FatherGetResInterface;
 import com.gdsc.forparents.domain.father.application.FatherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,12 +33,11 @@ public class FatherController {
      * 아버지를 눌렀을때 -> 아버지 작성한 테스트 결과 제공
      */
     @GetMapping("/self")
-    public ResponseEntity<Map<String, List<FatherGetResListDto>>> fatherSelf(@RequestBody FatherGetReqDto fatherGetReqDto) {
+    public ResponseEntity<FatherGetListDto> fatherSelf(@RequestBody FatherGetReqDto fatherGetReqDto) {
 
-        List<FatherGetResListDto> fatherSelf = fatherService.getFatherSelf(fatherGetReqDto.getUserCode());
-        Map<String, List<FatherGetResListDto>> questions = new HashMap<>();
+        List<FatherGetResInterface> fatherSelf = fatherService.getFatherSelf(fatherGetReqDto.getUserCode());
 
-        return new ResponseEntity<>(questions, HttpStatus.OK);
+        return new ResponseEntity<>(new FatherGetListDto(fatherSelf), HttpStatus.OK);
     }
 
     /**
@@ -58,10 +57,12 @@ public class FatherController {
     @PostMapping("/other")
     private ResponseEntity<String> fatherOtherResult(@RequestBody FatherSaveReqListDto fatherReqListDto) {
 
-//        fatherService.saveFatherOther(fatherReqListDto);
+        fatherService.saveFatherOther(fatherReqListDto);
 
         return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
+
+
 
 
 }
