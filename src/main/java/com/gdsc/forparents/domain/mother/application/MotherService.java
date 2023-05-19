@@ -63,8 +63,21 @@ public class MotherService {
     /**
      * 엄마가 아빠한 거 저장(other)
      */
-    public void saveMotherOther(){
+    public void saveMotherOther(MotherSaveReqListDto motherSaveReqListDto){
 
+        String userCode = motherSaveReqListDto.getUserCode();
+        Users users = userRepository.findByUserCode(userCode);
+
+        for (MotherSaveReqDto question : motherSaveReqListDto.getQuestions()) {
+            Mother mother = Mother.builder()
+                    .ans(question.getAns())
+                    .qNum(question.getQ_num())
+                    .flag(question.isFlag())
+                    .users(users)
+                    .build();
+
+            motherRepository.save(mother);
+        }
     }
 
 }
