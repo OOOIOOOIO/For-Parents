@@ -62,8 +62,22 @@ public class FatherService {
     /**
      * 아빠가 엄마한 거 저장(other)
      */
-    public void saveFatherOther(){
+    public void saveFatherOther(FatherSaveReqListDto fatherSaveReqListDto){
 
+        String userCode = fatherSaveReqListDto.getUserCode();
+
+        Users users = userRepository.findByUserCode(userCode);
+
+        for (FatherSaveReqDto question : fatherSaveReqListDto.getQuestions()) {
+            Father father = Father.builder()
+                    .ans(question.getAns())
+                    .qNum(question.getQNum())
+                    .flag(question.isFlag())
+                    .users(users)
+                    .build();
+
+            fatherRepository.save(father);
+        }
     }
 
 

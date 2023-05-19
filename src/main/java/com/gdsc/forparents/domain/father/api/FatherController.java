@@ -47,17 +47,19 @@ public class FatherController {
     public ResponseEntity<String> fatherSelfResult(@RequestBody FatherSaveReqListDto fatherReqListDto) {
 
         fatherService.saveFatherSelf(fatherReqListDto);
-        return null;
-//        return new ResponseEntity<>();
+
+        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
 
     /**
      * 아버지 테스트 -> 아버지가 어머니에 대한 테스트 결과 완료 눌렀을 때
      */
-    @PostMapping("/father/other")
-    private ResponseEntity<String> fatherOtherResult() {
-        return null;
-//        return new ResponseEntity<>();
+    @PostMapping("/other")
+    private ResponseEntity<String> fatherOtherResult(@RequestBody FatherSaveReqListDto fatherReqListDto) {
+
+        fatherService.saveFatherOther(fatherReqListDto);
+
+        return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
 
 
