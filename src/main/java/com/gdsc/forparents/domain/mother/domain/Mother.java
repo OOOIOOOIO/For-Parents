@@ -1,7 +1,6 @@
 package com.gdsc.forparents.domain.mother.domain;
 
-import com.gdsc.forparents.domain.father.domain.Father;
-import com.gdsc.forparents.domain.mother.api.dto.MotherDto;
+import com.gdsc.forparents.domain.mother.api.dto.request.MotherSaveReqDto;
 import com.gdsc.forparents.domain.user.domain.Users;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -27,18 +26,20 @@ public class Mother {
     private Users users;
 
     @Builder
-    private Mother(int qNum, String ans, boolean flag) {
+    private Mother(int qNum, String ans, boolean flag, Users users) {
         this.qNum = qNum;
         this.ans = ans;
         this.flag = flag;
+        this.users = users;
     }
 
     // dto 정해지면
-    public static Mother createMother(MotherDto motherDto) {
+    public static Mother createMother(MotherSaveReqDto motherDto, Users users) {
         return Mother.builder()
-                .qNum(motherDto.getQNum())
+                .qNum(motherDto.getQ_num())
                 .ans(motherDto.getAns())
                 .flag(motherDto.isFlag())
+                .users(users)
                 .build();
     }
 }
