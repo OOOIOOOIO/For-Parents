@@ -2,6 +2,7 @@ package com.gdsc.forparents.domain.father.application;
 
 import com.gdsc.forparents.domain.father.api.dto.request.FatherSaveReqDto;
 import com.gdsc.forparents.domain.father.api.dto.request.FatherSaveReqListDto;
+import com.gdsc.forparents.domain.father.api.dto.response.FatherGetResListDto;
 import com.gdsc.forparents.domain.father.domain.Father;
 import com.gdsc.forparents.domain.father.domain.repository.FatherRepository;
 import com.gdsc.forparents.domain.user.domain.Users;
@@ -25,13 +26,13 @@ public class FatherService {
     /**
      * 아빠가 아빠거 조회(self)
      */
-    public FatherSaveReqListDto getFatherSelf(String userCode){
+    public List<FatherGetResListDto> getFatherSelf(String userCode){
         Users users = userRepository.findByUserCode(userCode);
+        int flag = 0;
+        List<FatherGetResListDto> byUsersAndFlagOrderByQNum = fatherRepository.findByUsersAndFlagOrderByQNum(users.getUserId(), flag);
 
-//        List<Father> byUsersAndFlagOrderByQNum = fatherRepository.findByUsersAndFlagOrderByQNum(users, false);
 
-
-        return null;
+        return byUsersAndFlagOrderByQNum;
     }
 
     /**
@@ -49,12 +50,13 @@ public class FatherService {
         for (FatherSaveReqDto question : fatherSaveReqListDto.getQuestions()) {
             Father father = Father.builder()
                     .ans(question.getAns())
-                    .qNum(question.getQNum())
-                    .flag(question.isFlag())
+                    .qNum(question.getQ_num())
+                    .flag(question.getFlag())
                     .users(users)
                     .build();
 
             fatherRepository.save(father);
+
         }
 
     }
@@ -62,22 +64,8 @@ public class FatherService {
     /**
      * 아빠가 엄마한 거 저장(other)
      */
-    public void saveFatherOther(FatherSaveReqListDto fatherSaveReqListDto){
+    public void saveFatherOther(){
 
-        String userCode = fatherSaveReqListDto.getUserCode();
-
-        Users users = userRepository.findByUserCode(userCode);
-
-        for (FatherSaveReqDto question : fatherSaveReqListDto.getQuestions()) {
-            Father father = Father.builder()
-                    .ans(question.getAns())
-                    .qNum(question.getQNum())
-                    .flag(question.isFlag())
-                    .users(users)
-                    .build();
-
-            fatherRepository.save(father);
-        }
     }
 
 

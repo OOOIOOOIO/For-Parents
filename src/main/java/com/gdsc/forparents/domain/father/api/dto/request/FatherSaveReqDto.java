@@ -9,15 +9,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FatherSaveReqDto {
-    private Long fatherId;
-    private int qNum;
+    private int q_num;
     private String ans;
-    private boolean flag;
+    private int flag;
 
-    @Builder
-    public FatherSaveReqDto(Long fatherId, int qNum, String ans, boolean flag) {
-        this.fatherId = fatherId;
-        this.qNum = qNum;
+    public FatherSaveReqDto(int qNum, String ans, int flag) {
+        this.q_num = qNum;
         this.ans = ans;
         this.flag = flag;
     }

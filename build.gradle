@@ -31,6 +31,8 @@ dependencies {
     //테스트에서 lombok 사용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+
+    implementation "com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1" // log의 sql (? ?) 에 어떤 값이 들어가는지 로그로 찍어준다.
 }
 
 tasks.named('test') {

@@ -12,4 +12,9 @@ public class FatherSaveReqListDto {
 
     private List<FatherSaveReqDto> questions;
     private String userCode;
+
+    public FatherSaveReqListDto(List<FatherSaveReqDto> questions, String userCode) {
+        this.questions = questions;
+        this.userCode = userCode;
+    }
 }

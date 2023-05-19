@@ -18,16 +18,17 @@ public class Father {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "father_id")
     private Long fatherId;
+    @Column(name = "q_num")
     private int qNum;
     private String ans;
-    private boolean flag;
+    private int flag;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Users users;
 
     @Builder
-    public Father(int qNum, String ans, boolean flag, Users users) {
+    public Father(int qNum, String ans, int flag, Users users) {
         this.qNum = qNum;
         this.ans = ans;
         this.flag = flag;
@@ -37,9 +38,9 @@ public class Father {
     // dto 정해지면
     public static Father createFather(FatherSaveReqDto fatherDto, Users users){
         return Father.builder()
-                .qNum(fatherDto.getQNum())
+                .qNum(fatherDto.getQ_num())
                 .ans(fatherDto.getAns())
-                .flag(fatherDto.isFlag())
+                .flag(fatherDto.getFlag())
                 .users(users)
                 .build();
     }
