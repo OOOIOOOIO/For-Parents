@@ -3,9 +3,9 @@ spring:
     url: jdbc:mysql://localhost:3306/hack?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
     username: hack
     password: hack
-    #    url: jdbc:mysql://34.123.145.68:3306/wero?useSSL=false&allowPublicKeyRetrieval=true&&characterEncoding=UTF-8&serverTimezone=UTC
-    #    username: wero
-    #    password: wero
+#    url: jdbc:mysql://seongho-rds.cpjoxjpm1vci.ap-northeast-2.rds.amazonaws.com:3306/hack?useSSL=false&allowPublicKeyRetrieval=true&&characterEncoding=UTF-8&serverTimezone=UTC
+#    username: hack
+#    password: hack
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     open-in-view: false

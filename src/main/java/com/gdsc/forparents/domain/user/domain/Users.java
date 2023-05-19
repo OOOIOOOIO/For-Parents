@@ -30,8 +30,8 @@ public class Users {
     @OneToMany(mappedBy = "users", cascade = CascadeType.REMOVE)
     private List<Father> fatherList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "users", cascade = CascadeType.REMOVE)
-    private Lottery lottery;
+    @OneToMany(mappedBy = "users", cascade = CascadeType.REMOVE)
+    private List<Lottery> lotteryList = new ArrayList<>();
 
 
     @Builder
