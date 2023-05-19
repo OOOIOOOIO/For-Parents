@@ -55,7 +55,7 @@ public class MotherController {
     }
 
     /**
-     * 어머니 테스트 -> 어머니가 아버지에 대한 테스트 결과 완료 눌렀을 때
+     * 어머니 테스트 -> 어머니가 아버지에 대한 테스트 결과 완료 눌렀을 때.
      */
     @PostMapping("/other")
     private ResponseEntity<String> motherOtherResult(@RequestBody MotherSaveReqListDto motherReqListDto) {
